@@ -1,30 +1,15 @@
 <template>
-  <div
-    class="inline-block"
-    :style="interactiveStyle"
-    @closePopper="hover && closePopper()"
-    ref="popperContainerNode"
-  >
-    <div
-      ref="triggerNode"
-      @mouseover="hover && openPopper()"
-      @click="togglePopper"
-      @focus="openPopper"
-      @keyup.esc="closePopper"
-    >
+  <div class="inline-block" :style="interactiveStyle" @closePopper="hover && closePopper()" ref="popperContainerNode">
+    <div ref="triggerNode" @mouseover="hover && openPopper()" @click="togglePopper" @focus="openPopper"
+      @keyup.esc="closePopper">
       <!-- The default slot to trigger the popper  -->
       <slot />
     </div>
     <PopperTeleportWrapper :teleport="teleport">
       <Transition name="fade">
-        <div
-          @mouseover="hover && teleport && openPopper()"
-          @closePopper="hover && teleport && closePopper()"
-          @click="!interactive && closePopper()"
-          v-show="shouldShowPopper"
-          class="popper"
-          ref="popperNode"
-        >
+        <div @mouseover="hover && teleport && openPopper()" @mouseleave="hover && teleport && mouseLeave()"
+          @closePopper="hover && teleport && closePopper()" @click="!interactive && closePopper()"
+          v-show="shouldShowPopper" class="popper" ref="popperNode">
           <slot name="content" :close="close" :isOpen="modifiedIsOpen">
             {{ content }}
           </slot>

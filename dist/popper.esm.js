@@ -2141,7 +2141,7 @@ var script = {
     const props = __props;
 
     useCssVars(_ctx => ({
-      "db31447e": __props.zIndex
+      "173c9d74": __props.zIndex
     }));
 
     const slots = useSlots();
@@ -2265,7 +2265,7 @@ var script = {
       return openBlock(), createElementBlock("div", {
         class: "inline-block",
         style: normalizeStyle(unref(interactiveStyle)),
-        onClosePopper: _cache[4] || (_cache[4] = $event => __props.hover && closePopper()),
+        onClosePopper: _cache[5] || (_cache[5] = $event => __props.hover && closePopper()),
         ref: (_value, _refs) => {
           _refs['popperContainerNode'] = _value;
           popperContainerNode.value = _value;
@@ -2287,8 +2287,9 @@ var script = {
         }, {
           default: withCtx(() => [withDirectives(createElementVNode("div", {
             onMouseover: _cache[1] || (_cache[1] = $event => __props.hover && __props.teleport && openPopper()),
-            onClosePopper: _cache[2] || (_cache[2] = $event => __props.hover && __props.teleport && closePopper()),
-            onClick: _cache[3] || (_cache[3] = $event => !unref(interactive) && closePopper()),
+            onMouseleave: _cache[2] || (_cache[2] = $event => __props.hover && __props.teleport && _ctx.mouseLeave()),
+            onClosePopper: _cache[3] || (_cache[3] = $event => __props.hover && __props.teleport && closePopper()),
+            onClick: _cache[4] || (_cache[4] = $event => !unref(interactive) && closePopper()),
             class: "popper",
             ref: (_value, _refs) => {
               _refs['popperNode'] = _value;
@@ -2309,10 +2310,10 @@ var script = {
 
 };
 
-var css_248z = "\n.inline-block[data-v-2a983811] {\n    display: inline-block;\n}\n.popper[data-v-2a983811] {\n    transition: background 250ms ease-in-out;\n    background: var(--popper-theme-background-color);\n    padding: var(--popper-theme-padding);\n    color: var(--popper-theme-text-color);\n    border-radius: var(--popper-theme-border-radius);\n    border-width: var(--popper-theme-border-width);\n    border-style: var(--popper-theme-border-style);\n    border-color: var(--popper-theme-border-color);\n    box-shadow: var(--popper-theme-box-shadow);\n    z-index: var(--db31447e);\n}\n.popper[data-v-2a983811]:hover,\n  .popper:hover > #arrow[data-v-2a983811]::before {\n    background: var(--popper-theme-background-color-hover);\n}\n.inline-block[data-v-2a983811] {\n    display: inline-block;\n}\n.fade-enter-active[data-v-2a983811],\n  .fade-leave-active[data-v-2a983811] {\n    transition: opacity 0.2s ease;\n}\n.fade-enter-from[data-v-2a983811],\n  .fade-leave-to[data-v-2a983811] {\n    opacity: 0;\n}\n";
+var css_248z = "\n.inline-block[data-v-1d70aa5a] {\n    display: inline-block;\n}\n.popper[data-v-1d70aa5a] {\n    transition: background 250ms ease-in-out;\n    background: var(--popper-theme-background-color);\n    padding: var(--popper-theme-padding);\n    color: var(--popper-theme-text-color);\n    border-radius: var(--popper-theme-border-radius);\n    border-width: var(--popper-theme-border-width);\n    border-style: var(--popper-theme-border-style);\n    border-color: var(--popper-theme-border-color);\n    box-shadow: var(--popper-theme-box-shadow);\n    z-index: var(--173c9d74);\n}\n.popper[data-v-1d70aa5a]:hover,\n  .popper:hover > #arrow[data-v-1d70aa5a]::before {\n    background: var(--popper-theme-background-color-hover);\n}\n.inline-block[data-v-1d70aa5a] {\n    display: inline-block;\n}\n.fade-enter-active[data-v-1d70aa5a],\n  .fade-leave-active[data-v-1d70aa5a] {\n    transition: opacity 0.2s ease;\n}\n.fade-enter-from[data-v-1d70aa5a],\n  .fade-leave-to[data-v-1d70aa5a] {\n    opacity: 0;\n}\n";
 styleInject(css_248z);
 
-script.__scopeId = "data-v-2a983811";
+script.__scopeId = "data-v-1d70aa5a";
 
 // IIFE injects install function into component, allowing component
 // to be registered via Vue.use() as well as Vue.component(),
