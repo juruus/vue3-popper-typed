@@ -32,6 +32,7 @@ declare module "vue3-popper" {
     interactive?: boolean;
     locked?: boolean;
     content?: string;
+    teleport?: boolean;
     "onOpen:popper"?: () => void;
     "onClose:popper"?: () => void;
   }
