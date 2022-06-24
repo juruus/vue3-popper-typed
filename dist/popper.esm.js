@@ -1,4 +1,4 @@
-import { isRef, watch, onMounted, onBeforeUnmount, unref, ref, reactive, nextTick, toRefs, openBlock, createElementBlock, useCssVars, useSlots, computed, watchEffect, normalizeStyle, createElementVNode, withKeys, renderSlot, createVNode, Transition, withCtx, withDirectives, createTextVNode, toDisplayString, createBlock, createCommentVNode, vShow } from 'vue';
+import { isRef, watch, onMounted, onBeforeUnmount, unref, ref, reactive, nextTick, toRefs, openBlock, createElementBlock, defineComponent, createBlock, Teleport, renderSlot, useCssVars, useSlots, computed, watchEffect, normalizeStyle, createElementVNode, withKeys, createVNode, withCtx, Transition, withDirectives, createTextVNode, toDisplayString, createCommentVNode, vShow } from 'vue';
 
 /**
  * Returns a function, that, as long as it continues to be invoked, will not
@@ -1932,7 +1932,7 @@ const _hoisted_1$1 = {
   id: "arrow",
   "data-popper-arrow": ""
 };
-function render(_ctx, _cache) {
+function render$1(_ctx, _cache) {
   return openBlock(), createElementBlock("div", _hoisted_1$1);
 }
 
@@ -1963,13 +1963,41 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$1 = "\n#arrow[data-v-20b7fd4a],\n  #arrow[data-v-20b7fd4a]::before {\n    transition: background 250ms ease-in-out;\n    position: absolute;\n    width: calc(10px - var(--popper-theme-border-width, 0px));\n    height: calc(10px - var(--popper-theme-border-width, 0px));\n    box-sizing: border-box;\n    background: var(--popper-theme-background-color);\n}\n#arrow[data-v-20b7fd4a] {\n    visibility: hidden;\n}\n#arrow[data-v-20b7fd4a]::before {\n    visibility: visible;\n    content: \"\";\n    transform: rotate(45deg);\n}\n\n  /* Top arrow */\n.popper[data-popper-placement^=\"top\"] > #arrow[data-v-20b7fd4a] {\n    bottom: -5px;\n}\n.popper[data-popper-placement^=\"top\"] > #arrow[data-v-20b7fd4a]::before {\n    border-right: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n    border-bottom: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n}\n\n  /* Bottom arrow */\n.popper[data-popper-placement^=\"bottom\"] > #arrow[data-v-20b7fd4a] {\n    top: -5px;\n}\n.popper[data-popper-placement^=\"bottom\"] > #arrow[data-v-20b7fd4a]::before {\n    border-left: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n    border-top: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n}\n\n  /* Left arrow */\n.popper[data-popper-placement^=\"left\"] > #arrow[data-v-20b7fd4a] {\n    right: -5px;\n}\n.popper[data-popper-placement^=\"left\"] > #arrow[data-v-20b7fd4a]::before {\n    border-right: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n    border-top: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n}\n\n  /* Right arrow */\n.popper[data-popper-placement^=\"right\"] > #arrow[data-v-20b7fd4a] {\n    left: -5px;\n}\n";
+var css_248z$1 = "\n#arrow[data-v-9846e22a],\n  #arrow[data-v-9846e22a]::before {\n    transition: background 250ms ease-in-out;\n    position: absolute;\n    width: calc(10px - var(--popper-theme-border-width, 0px));\n    height: calc(10px - var(--popper-theme-border-width, 0px));\n    box-sizing: border-box;\n    background: var(--popper-theme-background-color);\n}\n#arrow[data-v-9846e22a] {\n    visibility: hidden;\n}\n#arrow[data-v-9846e22a]::before {\n    visibility: visible;\n    content: \"\";\n    transform: rotate(45deg);\n}\n  /* Top arrow */\n.popper[data-popper-placement^=\"top\"] > #arrow[data-v-9846e22a] {\n    bottom: -5px;\n}\n.popper[data-popper-placement^=\"top\"] > #arrow[data-v-9846e22a]::before {\n    border-right: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n    border-bottom: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n}\n  /* Bottom arrow */\n.popper[data-popper-placement^=\"bottom\"] > #arrow[data-v-9846e22a] {\n    top: -5px;\n}\n.popper[data-popper-placement^=\"bottom\"] > #arrow[data-v-9846e22a]::before {\n    border-left: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n    border-top: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n}\n  /* Left arrow */\n.popper[data-popper-placement^=\"left\"] > #arrow[data-v-9846e22a] {\n    right: -5px;\n}\n.popper[data-popper-placement^=\"left\"] > #arrow[data-v-9846e22a]::before {\n    border-right: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n    border-top: var(--popper-theme-border-width)\n      var(--popper-theme-border-style) var(--popper-theme-border-color);\n}\n  /* Right arrow */\n.popper[data-popper-placement^=\"right\"] > #arrow[data-v-9846e22a] {\n    left: -5px;\n}\n";
 styleInject(css_248z$1);
 
-const script$1 = {};
+const script$2 = {};
+script$2.render = render$1;
+script$2.__scopeId = "data-v-9846e22a";
+var Arrow = script$2;
+
+/**
+ * The Popper Teleport Wrapper component.
+ */
+
+var script$1 = /*#__PURE__*/defineComponent({
+  name: "PopperTeleportWrapper",
+  props: {
+    /**
+     * Teleport popper element to selector
+     */
+    teleport: {
+      type: String,
+      default: null
+    }
+  }
+});
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return _ctx.teleport ? (openBlock(), createBlock(Teleport, {
+    key: 0,
+    to: _ctx.teleport
+  }, [renderSlot(_ctx.$slots, "default")], 8, ["to"])) : renderSlot(_ctx.$slots, "default", {
+    key: 1
+  });
+}
+
 script$1.render = render;
-script$1.__scopeId = "data-v-20b7fd4a";
-var Arrow = script$1;
 
 const _hoisted_1 = ["onKeyup"];
 var script = {
@@ -2095,6 +2123,14 @@ var script = {
     content: {
       type: String,
       default: null
+    },
+
+    /**
+     * Teleport popper element to selector
+     */
+    teleport: {
+      type: String,
+      default: null
     }
   },
   emits: ["open:popper", "close:popper"],
@@ -2105,7 +2141,7 @@ var script = {
     const props = __props;
 
     useCssVars(_ctx => ({
-      "c81fc0a4": __props.zIndex
+      "db31447e": __props.zIndex
     }));
 
     const slots = useSlots();
@@ -2229,7 +2265,7 @@ var script = {
       return openBlock(), createElementBlock("div", {
         class: "inline-block",
         style: normalizeStyle(unref(interactiveStyle)),
-        onMouseleave: _cache[2] || (_cache[2] = $event => __props.hover && closePopper()),
+        onClosePopper: _cache[4] || (_cache[4] = $event => __props.hover && closePopper()),
         ref: (_value, _refs) => {
           _refs['popperContainerNode'] = _value;
           popperContainerNode.value = _value;
@@ -2243,33 +2279,40 @@ var script = {
         onClick: togglePopper,
         onFocus: openPopper,
         onKeyup: withKeys(closePopper, ["esc"])
-      }, [renderSlot(_ctx.$slots, "default")], 40, _hoisted_1), createVNode(Transition, {
-        name: "fade"
+      }, [renderSlot(_ctx.$slots, "default")], 40, _hoisted_1), createVNode(script$1, {
+        teleport: __props.teleport
       }, {
-        default: withCtx(() => [withDirectives(createElementVNode("div", {
-          onClick: _cache[1] || (_cache[1] = $event => !unref(interactive) && closePopper()),
-          class: "popper",
-          ref: (_value, _refs) => {
-            _refs['popperNode'] = _value;
-            popperNode.value = _value;
-          }
-        }, [renderSlot(_ctx.$slots, "content", {
-          close: unref(close),
-          isOpen: modifiedIsOpen.value
-        }, () => [createTextVNode(toDisplayString(unref(content)), 1)]), __props.arrow ? (openBlock(), createBlock(Arrow, {
-          key: 0
-        })) : createCommentVNode("", true)], 512), [[vShow, unref(shouldShowPopper)]])]),
+        default: withCtx(() => [createVNode(Transition, {
+          name: "fade"
+        }, {
+          default: withCtx(() => [withDirectives(createElementVNode("div", {
+            onMouseover: _cache[1] || (_cache[1] = $event => __props.hover && __props.teleport && openPopper()),
+            onClosePopper: _cache[2] || (_cache[2] = $event => __props.hover && __props.teleport && closePopper()),
+            onClick: _cache[3] || (_cache[3] = $event => !unref(interactive) && closePopper()),
+            class: "popper",
+            ref: (_value, _refs) => {
+              _refs['popperNode'] = _value;
+              popperNode.value = _value;
+            }
+          }, [renderSlot(_ctx.$slots, "content", {
+            close: unref(close),
+            isOpen: modifiedIsOpen.value
+          }, () => [createTextVNode(toDisplayString(unref(content)), 1)]), __props.arrow ? (openBlock(), createBlock(Arrow, {
+            key: 0
+          })) : createCommentVNode("", true)], 544), [[vShow, unref(shouldShowPopper)]])]),
+          _: 3
+        })]),
         _: 3
-      })], 36);
+      }, 8, ["teleport"])], 36);
     };
   }
 
 };
 
-var css_248z = "\n.inline-block[data-v-5784ed69] {\n    display: inline-block;\n}\n.popper[data-v-5784ed69] {\n    transition: background 250ms ease-in-out;\n    background: var(--popper-theme-background-color);\n    padding: var(--popper-theme-padding);\n    color: var(--popper-theme-text-color);\n    border-radius: var(--popper-theme-border-radius);\n    border-width: var(--popper-theme-border-width);\n    border-style: var(--popper-theme-border-style);\n    border-color: var(--popper-theme-border-color);\n    box-shadow: var(--popper-theme-box-shadow);\n    z-index: var(--c81fc0a4);\n}\n.popper[data-v-5784ed69]:hover,\n  .popper:hover > #arrow[data-v-5784ed69]::before {\n    background: var(--popper-theme-background-color-hover);\n}\n.inline-block[data-v-5784ed69] {\n    display: inline-block;\n}\n.fade-enter-active[data-v-5784ed69],\n  .fade-leave-active[data-v-5784ed69] {\n    transition: opacity 0.2s ease;\n}\n.fade-enter-from[data-v-5784ed69],\n  .fade-leave-to[data-v-5784ed69] {\n    opacity: 0;\n}\n";
+var css_248z = "\n.inline-block[data-v-2a983811] {\n    display: inline-block;\n}\n.popper[data-v-2a983811] {\n    transition: background 250ms ease-in-out;\n    background: var(--popper-theme-background-color);\n    padding: var(--popper-theme-padding);\n    color: var(--popper-theme-text-color);\n    border-radius: var(--popper-theme-border-radius);\n    border-width: var(--popper-theme-border-width);\n    border-style: var(--popper-theme-border-style);\n    border-color: var(--popper-theme-border-color);\n    box-shadow: var(--popper-theme-box-shadow);\n    z-index: var(--db31447e);\n}\n.popper[data-v-2a983811]:hover,\n  .popper:hover > #arrow[data-v-2a983811]::before {\n    background: var(--popper-theme-background-color-hover);\n}\n.inline-block[data-v-2a983811] {\n    display: inline-block;\n}\n.fade-enter-active[data-v-2a983811],\n  .fade-leave-active[data-v-2a983811] {\n    transition: opacity 0.2s ease;\n}\n.fade-enter-from[data-v-2a983811],\n  .fade-leave-to[data-v-2a983811] {\n    opacity: 0;\n}\n";
 styleInject(css_248z);
 
-script.__scopeId = "data-v-5784ed69";
+script.__scopeId = "data-v-2a983811";
 
 // IIFE injects install function into component, allowing component
 // to be registered via Vue.use() as well as Vue.component(),
