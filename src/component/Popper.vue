@@ -7,7 +7,7 @@
     </div>
     <PopperTeleportWrapper :teleport="teleport">
       <Transition name="fade">
-        <div @mouseover="hover && teleport && openPopper()" @mouseleave="hover && teleport && mouseLeave()"
+        <div @mouseover="hover && teleport && openPopper()" @mouseleave="hover && teleport && closePopper()"
           @closePopper="hover && teleport && closePopper()" @click="!interactive && closePopper()"
           v-show="shouldShowPopper" class="popper" ref="popperNode">
           <slot name="content" :close="close" :isOpen="modifiedIsOpen">
