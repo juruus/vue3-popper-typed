@@ -2,7 +2,7 @@
   <div
     class="inline-block"
     :style="interactiveStyle"
-    @mouseleave="hover && closePopper()"
+    @closePopper="hover && closePopper()"
     ref="popperContainerNode"
   >
     <div
@@ -15,19 +15,23 @@
       <!-- The default slot to trigger the popper  -->
       <slot />
     </div>
-    <Transition name="fade">
-      <div
-        @click="!interactive && closePopper()"
-        v-show="shouldShowPopper"
-        class="popper"
-        ref="popperNode"
-      >
-        <slot name="content" :close="close" :isOpen="modifiedIsOpen">
-          {{ content }}
-        </slot>
-        <Arrow v-if="arrow" />
-      </div>
-    </Transition>
+    <PopperTeleportWrapper :teleport="teleport">
+      <Transition name="fade">
+        <div
+          @mouseover="hover && teleport && openPopper()"
+          @closePopper="hover && teleport && closePopper()"
+          @click="!interactive && closePopper()"
+          v-show="shouldShowPopper"
+          class="popper"
+          ref="popperNode"
+        >
+          <slot name="content" :close="close" :isOpen="modifiedIsOpen">
+            {{ content }}
+          </slot>
+          <Arrow v-if="arrow" />
+        </div>
+      </Transition>
+    </PopperTeleportWrapper>
   </div>
 </template>
 
@@ -45,7 +49,7 @@
   } from "vue";
   import { usePopper, useContent, useClickAway } from "@/composables";
   import Arrow from "./Arrow.vue";
-
+  import PopperTeleportWrapper from './PopperTeleportWrapper.vue'
   const emit = defineEmits(["open:popper", "close:popper"]);
   const slots = useSlots();
   const props = defineProps({
@@ -173,23 +177,26 @@
       type: String,
       default: null,
     },
+    /**
+     * Teleport popper element to selector
+     */
+    teleport: {
+      type: String,
+      default: null,
+    },
   });
-
   const popperContainerNode = ref(null);
   const popperNode = ref(null);
   const triggerNode = ref(null);
   const modifiedIsOpen = ref(false);
-
   onMounted(() => {
     const children = slots.default();
-
     if (children && children.length > 1) {
       return console.error(
         `[Popper]: The <Popper> component expects only one child element at its root. You passed ${children.length} child nodes.`,
       );
     }
   });
-
   const {
     arrowPadding,
     closeDelay,
@@ -204,7 +211,6 @@
     placement,
     show,
   } = toRefs(props);
-
   const { isOpen, open, close } = usePopper({
     arrowPadding,
     emit,
@@ -215,9 +221,7 @@
     popperNode,
     triggerNode,
   });
-
   const { hasContent } = useContent(slots, popperNode, content);
-
   const manualMode = computed(() => show.value !== null);
   const invalid = computed(() => disabled.value || !hasContent.value);
   const shouldShowPopper = computed(() => isOpen.value && !invalid.value);
@@ -230,32 +234,25 @@
       ? `border: ${offsetDistance.value}px solid transparent; margin: -${offsetDistance.value}px;`
       : null,
   );
-
   const openPopperDebounce = debounce(open, openDelay.value);
   const closePopperDebounce = debounce(close, closeDelay.value);
-
   const openPopper = async () => {
     if (invalid.value || manualMode.value) {
       return;
     }
-
     closePopperDebounce.clear();
     openPopperDebounce();
   };
-
   const closePopper = async () => {
     if (manualMode.value) {
       return;
     }
-
     openPopperDebounce.clear();
     closePopperDebounce();
   };
-
   const togglePopper = () => {
     isOpen.value ? closePopper() : openPopper();
   };
-
   /**
    * If Popper is open, we automatically close it if it becomes
    * disabled or without content.
@@ -265,7 +262,6 @@
       close();
     }
   });
-
   /**
    * In order to eliminate flickering or visibly empty Poppers due to
    * the transition when using the isOpen slot property, we need to return a
@@ -280,7 +276,6 @@
       }, 200);
     }
   });
-
   /**
    * Watch for manual mode.
    */
@@ -289,7 +284,6 @@
       show.value ? openPopperDebounce() : closePopperDebounce();
     }
   });
-
   /**
    * Use click away if it should be enabled.
    */
@@ -316,21 +310,17 @@
     box-shadow: var(--popper-theme-box-shadow);
     z-index: v-bind(zIndex);
   }
-
   .popper:hover,
   .popper:hover > #arrow::before {
     background: var(--popper-theme-background-color-hover);
   }
-
   .inline-block {
     display: inline-block;
   }
-
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity 0.2s ease;
   }
-
   .fade-enter-from,
   .fade-leave-to {
     opacity: 0;
